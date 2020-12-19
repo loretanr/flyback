@@ -4,7 +4,7 @@ import pathlib
 # requires python 3.4 or higher
 
 # Interactive backup-script for copying files from A to B.
-# For files >= MIN_SIZE, the user can specify [backup / ignore / step into]
+# For all files >= MIN_SIZE, the user is prompted [include / exclude / step into]
 # All smaller files are copied anyway
 
 # Parameters, use absolute paths
@@ -66,8 +66,7 @@ def interactive_loop(curr_dir, excludelist):
     for filename in sorted_filelist:
         if os.path.isdir(filename[0]):
             while True:
-                answer = input(
-                    "{} {} ( /n/r) ".format(filename[0], print_bytes_human(filename[1])))
+                answer = input("{} {} ( /n/r) ".format(filename[0], print_bytes_human(filename[1])))
                 if answer == "n":
                     excludelist.write(abs_to_rel_path(filename[0]) + "\n")
                     break
@@ -80,8 +79,7 @@ def interactive_loop(curr_dir, excludelist):
                     print("invalid input, try again")
         else:
             while True:
-                answer = input(
-                    "{} {} ( /n) ".format(filename[0], print_bytes_human(filename[1])))
+                answer = input("{} {} ( /n) ".format(filename[0], print_bytes_human(filename[1])))
                 if answer == "n":
                     excludelist.write(abs_to_rel_path(filename[0]) + "\n")
                     break
