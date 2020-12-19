@@ -1,5 +1,5 @@
 # pyback
-A python backup script, that allows excluding unnecessary files interactively
+A python backup script, that allows excluding (large) unnecessary files on the fly
 
 * requires python 3.4 or higher
 
