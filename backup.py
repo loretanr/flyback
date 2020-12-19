@@ -1,9 +1,7 @@
 import os
 import pathlib
 
-# requires python 3.4 or higher
-
-# Interactive backup-script for copying files from A to B.
+# Interactive backup-script for copying backup_src to backup_dest.
 # For all files >= MIN_SIZE, the user is prompted [include / exclude / step into]
 # All smaller files are copied anyway
 
