@@ -1,12 +1,14 @@
 import os
 import pathlib
 
-# Interactive backup-script for copying backup_src to backup_dest.
+# Interactive backup-script for copying backup_src to backup_dest. 
+# Obviously backup_dest must not be anywhere inside backup_src.
 # For all files >= MIN_SIZE, the user is prompted [include / exclude / step into]
-# All smaller files are copied anyway
+# All smaller files are copied anyway.
+# Before the final rsync it will ask you again for confirmation.
 
 # Parameters, use absolute paths
-MIN_SIZE = 5000000  # (5MB)
+MIN_SIZE = 5000000  # (=5MB)
 backup_src = ""  # e.g. /home/schmina
 backup_dest = ""  # e.g. /media/external_harddrive/backup_june20
 
@@ -24,10 +26,10 @@ def get_directory_size(directory):  # in bytes
     total = 0
     try:
         for entry in os.scandir(directory):
-            if entry.is_dir():
-                total += get_directory_size(entry.path)
-            elif os.path.islink(directory):
+            if os.path.islink(directory):
                 continue
+            elif entry.is_dir():
+                total += get_directory_size(entry.path)
             elif entry.is_file():
                 total += entry.stat().st_size
     except NotADirectoryError:
