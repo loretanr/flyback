@@ -4,8 +4,8 @@ import pathlib
 # Interactive backup-script for copying backup_src to backup_dest. 
 # Obviously backup_dest must not be anywhere inside backup_src.
 # For all files >= MIN_SIZE, the user is prompted [include / exclude / step into]
-# All smaller files are copied anyway.
-# Before the final rsync it will ask you again for confirmation.
+# All smaller files are copied anyway. The list of files to be excluded will be here:
+# /tmp/exclude_dirs.txt. Before the final rsync it will ask you again for confirmation.
 
 # Parameters, use absolute paths
 MIN_SIZE = 5000000  # (=5MB)
